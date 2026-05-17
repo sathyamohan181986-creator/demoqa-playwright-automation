@@ -1,6 +1,6 @@
 import { expect, Page } from '@playwright/test';
 import { demohomepage, elementslocator } from '../locators/DemoQA';
-import { fillElementsPage } from '@test-data/testdata';
+import { readExcelData } from '@utils/excelreader';
 
 
 export class ElementsPage {constructor(private page: Page) {}
@@ -26,6 +26,7 @@ export class ElementsPage {constructor(private page: Page) {}
     await elementsloc.curradd.fill(currAdd);
     await elementsloc.permadd.fill(permAdd);
     await elementsloc.submitbtn.click();
+    await (expect )
   }
 
 //Assert the values of the Text Box Elements page
@@ -36,10 +37,20 @@ export class ElementsPage {constructor(private page: Page) {}
     await expect(elementsloc.email_OUTPUT).toContainText(emailId);
     await expect(elementsloc.curradd_OUTPUT).toContainText(currAdd);
     await expect(elementsloc.permadd_OUTPUT).toContainText(permAdd);
-    // ✅ Log the INPUT values to confirm what was asserted
-    console.log('✅ Asserted Name    :', fullName);
-    console.log('✅ Asserted Email   :', emailId);
-    console.log('✅ Asserted CurrAdd :', currAdd);
-    console.log('✅ Asserted PermAdd :', permAdd);
+
+  }
+
+// Assert invalid email - field highlighted with red border
+  async assertInvalidEmail(): Promise<void> {
+    const elementsloc = elementslocator(this.page);
+  
+// Assert the red border color on email field
+    await expect(elementsloc.email).toHaveCSS('border-color', 'rgb(220, 53, 69)');
+    console.log('✅ Invalid Email Assertion  : Email field highlighted with red border - PASS');
+  
+// OR assert by checking the field has 'error' class (inspect element to confirm)
+    await expect(elementsloc.email).toHaveClass(/error/);
+  
+    console.log('✅ Invalid email field highlighted with red border - verified');
   }
 }

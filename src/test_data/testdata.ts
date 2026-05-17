@@ -1,9 +1,3 @@
-export const loginData = {
-  validUser: {
-    username: 'rahulshettyacademy',
-    password: 'learning'
-  }
-};
 
 export const fillElementsPage = {
   textBoxElements: {

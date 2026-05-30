@@ -135,3 +135,4 @@ LoginPage.ts            ← page interactions, business workflows and assertions
 - **ExcelJS** reads `data.xlsx` at runtime. The `RunFlag` column gives non-technical team members control over which rows execute without touching code.
 - **Playwright's auto-waiting** ensures every `click()`, `fill()`, and `expect()` call waits for the element to be stable before acting — eliminating the need for manual `waitForTimeout()` calls.
 - **Screenshots** are saved to `Screenshot/` on demand and automatically to `test-results/` on failure, giving clear visual evidence for every failed assertion.
+- **CI/CD pipeline** (`.github/workflows/playwright.yml`) runs the full test suite automatically on every push to `main` or `develop`. Test results and the Playwright HTML report are uploaded as artifacts after every run — pass or fail.

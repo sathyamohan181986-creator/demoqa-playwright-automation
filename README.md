@@ -94,12 +94,27 @@ DEMOQA/
 - `screenshot: 'only-on-failure'` and `video: 'retain-on-failure'` capture evidence only when a test fails, keeping the `test-results/` folder clean.
 - `retries: 2` is set for CI runs to handle transient network flakiness on DemoQA.
 
-### 7. CI/CD pipeline (`.github/workflows/playwright.yml`)
-- Triggers on push to `main`/`develop`, pull requests, and a daily schedule at 2 AM UTC.
-- Installs Node.js 20, runs `npm ci`, installs Playwright browsers, then executes `npm run test:smoke`.
-- Uploads `allure-results/` and `playwright-report/` as GitHub Actions artifacts retained for 30 days.
-- On merge to `main`, the Allure report is published to **GitHub Pages** automatically.
+### 7. CI/CD Integration
 
+### GitHub Actions
+This project is integrated with GitHub Actions for continuous test execution.
+
+**Pipeline triggers:**
+- Every push to `main` or `develop` branch
+- Every pull request raised against `main`
+
+**What the pipeline does:**
+1. Checks out the code from GitHub
+2. Sets up Node.js 22 environment
+3. Installs project dependencies via `npm ci`
+4. Installs Playwright Chromium browser
+5. Executes all Playwright test specs via `npm test`
+6. Uploads the Playwright HTML report as a downloadable artifact (retained 30 days)
+
+**Viewing results:**
+- Go to the **Actions** tab in the GitHub repository
+- Click the latest workflow run to see step-by-step execution logs
+- Download the `playwright-report` artifact to view the detailed HTML report
 ---
 
 ## How the code works together

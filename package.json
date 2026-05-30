@@ -5,7 +5,7 @@
   "scripts": {
   "test": "playwright test",
   "test:report": "playwright show-report"
-}
+},
   "keywords": [],
   "author": "",
   "license": "ISC",

@@ -1,16 +1,20 @@
 import { expect, Page } from '@playwright/test';
-import { demohomepage } from '../locators/DemoQA';
+import { logindemoQA } from '../locators/DemoQA';
+import { loginData } from '../test_data/testdata';
 
 export class LoginPage {constructor(private page: Page) {}
 
 //Navigate to DemoQA URL
-  async navigatedemoQAhomePage(url: string) {
+  async demoQAloginpage(url: string, username: string, password: string) {
     await this.page.goto(url);
-  }
-
-//Validate the DemoQA home page and the title
-  async validatehomePageHeader(): Promise<void> {
-    const logo = this.page.locator('img[src*="Toolsqa"]');
-    await expect(logo).toBeVisible();
+ 
+    const loginUser = logindemoQA(this.page);
+    await loginUser.userName.fill(username);
+    await loginUser.password.fill(password);
+    await this.page.screenshot({ path: 'screenshots/loginpage.png', fullPage: true });
+    await loginUser.loginbtn.click();
+    await this.page.waitForTimeout(5000);
+    await this.page.screenshot({ path: 'screenshots/homepage.png', fullPage: true });
+    //await registerPage.registerbtn.click();
   }
 }

@@ -23,9 +23,10 @@ export const bookStore = (page: Page): Record<string, Locator> => ({
     bookName6:       page.getByRole('link', { name: 'Programming JavaScript Applications' }),
     bookName7:       page.getByRole('link', { name: 'Eloquent JavaScript, Second Edition' }),
     bookName8:       page.getByRole('link', { name: 'Understanding ECMAScript 6' }),
-    clicksearch:      page.getByRole('button').filter({ hasText: /^$/ }),
+    clicksearch:     page.getByRole('button').filter({ hasText: /^$/ }),
     addToCollection: page.getByRole('button', { name: 'Add To Your Collection' }),
     backToBookStore: page.getByRole('button', { name: 'Back To Book Store' }),
+    profileBook:     page.getByRole('link', { name: 'Profile' })
 })
 export const demohomepage = (page: Page): Record<string, Locator> => ({
     header:         page.getByRole('img', { name: 'Toolsqa' }),

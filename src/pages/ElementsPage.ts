@@ -1,5 +1,5 @@
 import { expect, Page } from '@playwright/test';
-import { demohomepage, elementslocator, checkboxlocator } from '../locators/DemoQA';
+import { demohomepage, elementslocator, checkboxlocator, radiobtnlocator } from '../locators/DemoQA';
 import { fillElementsPage } from '../test_data/testdata';
 import { readExcelData } from '@utils/excelreader';
 
@@ -58,7 +58,21 @@ export class ElementsPage {constructor(private page: Page) {}
     await checkboxloc.documentsCheckbox.check();
     //await checkboxloc.angularCheckbox.check();
     await this.page.screenshot({ path: 'screenshots/checkboxElements.png', fullPage: true });
+  }
 
+  async radioButtonElts() {
+    const elementscard = demohomepage(this.page);
+    await elementscard.elements.waitFor({ state: 'visible', timeout: 15000 });
+    await elementscard.elements.click();
+    const radiobtnloc = radiobtnlocator(this.page);
+    await radiobtnloc.radioButton.click();
+    await radiobtnloc.yesRadio.check();
+    await this.page.screenshot({ path: 'screenshots/radioButtonElements.png', fullPage: true });
+    await expect(this.page.locator('p.mt-3')).toHaveText('You have selected Yes');
+    console.log('✅ Radio Button Assertion  : You have selected Yes - PASS');
+    //await radiobtnloc.impressive.check();
+    //await this.page.screenshot({ path: 'screenshots/radioButtonElements_impressive.png', fullPage: true });
+    //await expect(radiobtnloc.message).toHaveText('You have selected Impressive');
   }
  
 }

@@ -21,5 +21,11 @@ test.describe('Access to DemoQA site', ()=> {
     await checkboxelts.clickElementsCard(demoQAURLchk);
     await checkboxelts.checkBoxElts();
   })
+  test('TC3: Validate Radio Button Elements', async ({ page }) => {
+    const radiobtnelts = new ElementsPage(page);
+    const demoQAURLradio = fillElementsPage.textBoxElements.demoQAurl;
+    await radiobtnelts.clickElementsCard(demoQAURLradio);
+    await radiobtnelts.radioButtonElts();
+  })
 
 });

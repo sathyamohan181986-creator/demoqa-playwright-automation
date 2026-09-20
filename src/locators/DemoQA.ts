@@ -69,4 +69,11 @@ export const checkboxlocator = (page: Page): Record<string, Locator> => ({
     
   })
 
+  export const radiobtnlocator = (page: Page): Record<string, Locator> => ({
+    radioButton:    page.getByText('Radio Button'),
+    yesRadio:       page.getByRole('radio', { name: 'Yes' }),
+    impressive:     page.getByRole('radio', { name: 'Impressive' }),
+    noRadio:        page.getByRole('radio', { name: 'No' }),
+  })
+
 //

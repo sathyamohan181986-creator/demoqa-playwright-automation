@@ -10,8 +10,16 @@ import { demohomepage } from 'src/locators/DemoQA';
 test.describe('Access to DemoQA site', ()=> {
   test('TC1: Validate Text Box Elements with valid input', async ({ page }) => {
     const elementscard = new ElementsPage(page);
-    const demoQAURL = fillElementsPage.textBoxElements.demoQAurl;
-    await elementscard.clickElementsCard(demoQAURL);
+    const demoQAURLtxt = fillElementsPage.textBoxElements.demoQAurl;
+    await elementscard.clickElementsCard(demoQAURLtxt);
     await elementscard.textBoxElts(fillElementsPage.textBoxElements.fullName, fillElementsPage.textBoxElements.emailId, fillElementsPage.textBoxElements.currAdd, fillElementsPage.textBoxElements.permAdd);
     await elementscard.assertOutputvalues(fillElementsPage.textBoxElements.fullName, fillElementsPage.textBoxElements.emailId, fillElementsPage.textBoxElements.currAdd, fillElementsPage.textBoxElements.permAdd);
-  })});
+  })
+  test('TC2: Validate Check Box Elements', async ({ page }) => {
+    const checkboxelts = new ElementsPage(page);
+    const demoQAURLchk = fillElementsPage.textBoxElements.demoQAurl;
+    await checkboxelts.clickElementsCard(demoQAURLchk);
+    await checkboxelts.checkBoxElts();
+  })
+
+});

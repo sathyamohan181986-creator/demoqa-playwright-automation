@@ -1,5 +1,5 @@
 import { expect, Page } from '@playwright/test';
-import { demohomepage, elementslocator } from '../locators/DemoQA';
+import { demohomepage, elementslocator, checkboxlocator } from '../locators/DemoQA';
 import { fillElementsPage } from '../test_data/testdata';
 import { readExcelData } from '@utils/excelreader';
 
@@ -14,6 +14,7 @@ export class ElementsPage {constructor(private page: Page) {}
     await elementscard.elements.waitFor({ state: 'visible', timeout: 15000 });
     await elementscard.elements.click();
     await this.page.screenshot({ path: 'screenshots/elementsCard.png', fullPage: true });
+   // await this.page.pause();
     await elementscard.textBox.click();
     await this.page.screenshot({ path: 'screenshots/textBoxElements.png', fullPage: true });
   }
@@ -44,6 +45,28 @@ export class ElementsPage {constructor(private page: Page) {}
     console.log('✅ Permanent Address  : ' + permAdd + ' - PASS');
 
   }
+
+  async checkBoxElts() {
+    const elementscard = demohomepage(this.page);
+    await elementscard.elements.waitFor({ state: 'visible', timeout: 15000 });
+    await elementscard.elements.click();
+    const checkboxloc = checkboxlocator(this.page);
+    await checkboxloc.checkbox.click();
+    await checkboxloc.treeSwitcher.click();
+    await checkboxloc.closedSwitcher.click();
+    await checkboxloc.desktopCheckbox.check();
+    await checkboxloc.documentsCheckbox.check();
+    //await checkboxloc.angularCheckbox.check();
+    await this.page.screenshot({ path: 'screenshots/checkboxElements.png', fullPage: true });
+
+  }
+ 
+}
+
+
+
+
+
 /*
 // Assert invalid email - field highlighted with red border
   async assertInvalidEmail(): Promise<void> {
@@ -58,4 +81,3 @@ export class ElementsPage {constructor(private page: Page) {}
   
     console.log('✅ Invalid email field highlighted with red border - verified');
   } */
-}

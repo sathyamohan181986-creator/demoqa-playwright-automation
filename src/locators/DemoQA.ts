@@ -32,6 +32,9 @@ export const demohomepage = (page: Page): Record<string, Locator> => ({
     header:         page.getByRole('img', { name: 'Toolsqa' }),
     elements:       page.getByText('Elements'),
     textBox:        page.getByText('Text Box'),
+    
+    radioButton:    page.getByText('Radio Button'),
+    webTables:      page.getByText('Web Tables'),
     forms:          page.getByText('Forms'),
     alframwin:      page.getByText('Alerts, Frame & Windows'),
     widgets:        page.getByText('Widgets'),
@@ -53,5 +56,17 @@ export const elementslocator = (page: Page): Record<string, Locator> => ({
     curradd_OUTPUT: page.locator('//p[@id="currentAddress"]'),
     permadd_OUTPUT: page.locator('//p[@id="permanentAddress"]')
 })
+
+export const checkboxlocator = (page: Page): Record<string, Locator> => ({
+    checkbox:       page.getByText('Check Box'),
+    treeSwitcher:   page.locator('.rc-tree-switcher'),
+    closedSwitcher: page.locator('.rc-tree-switcher.rc-tree-switcher_close').first(),
+    desktopCheckbox:page.getByRole('checkbox', { name: 'Select Desktop' }),
+    documentsCheckbox: page.getByRole('checkbox', { name: 'Select Documents' }),
+    workspaceCheckbox: page.getByRole('checkbox', { name: 'Select Workspace' }),
+    reactCheckbox:  page.getByRole('checkbox', { name: 'Select React' }),
+    angularCheckbox:page.getByRole('checkbox', { name: 'Select Angular' }),
+    
+  })
 
 //

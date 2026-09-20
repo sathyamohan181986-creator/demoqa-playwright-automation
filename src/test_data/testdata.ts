@@ -22,9 +22,11 @@ export const bookStoreData = {
 
 export const fillElementsPage = {
   textBoxElements: {
+    demoQAurl: 'https://demoqa.com/',
     fullName: 'Sathya Mohan',
     emailId:  'sathya.mohan181986@gmail.com',
-    currAdd:  'Saravanampatti',
-    permAdd:  'Saravanampatti'
+    currAdd:  'Hoeschweg 9 12307, Berlin, Germany',
+    permAdd:  'Hoeschweg 9 12307, Berlin, Germany'
   }
+
 }

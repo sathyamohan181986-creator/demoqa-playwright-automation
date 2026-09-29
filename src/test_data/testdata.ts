@@ -28,5 +28,16 @@ export const fillElementsPage = {
     currAdd:  'Hoeschweg 9 12307, Berlin, Germany',
     permAdd:  'Hoeschweg 9 12307, Berlin, Germany'
   }
+}
 
+export const webTablesData = {
+  webTablesElements: {
+    demoQAurl: 'https://demoqa.com/',
+    firstName: 'Sathya',
+    lastName:  'Mohan',
+    emailId:   'sathya.mohan181986@gmail.com',
+    age:       30,
+    salary:    5000,
+    department: 'IT'
+  }
 }

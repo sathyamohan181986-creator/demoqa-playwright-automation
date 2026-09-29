@@ -76,4 +76,28 @@ export const checkboxlocator = (page: Page): Record<string, Locator> => ({
     noRadio:        page.getByRole('radio', { name: 'No' }),
   })
 
-//
+  export const webtablelocator = (page: Page): Record<string, Locator> => ({
+    webTables:     page.getByText('Web Tables'),
+    addButton:     page.getByRole('button', { name: 'Add' }),
+    searchtxt:     page.getByPlaceholder('Type to search'),
+    clkSearch:     page.locator('//button[@id="basic-addon2"]'),
+    editicon:      page.locator('//*[@id="edit-record-1"]'),
+    deleteicon:    page.locator('//*[@id="delete-record-1"]'),
+    submitbtn:     page.getByRole('button', { name: 'Submit' }),
+    firstName:     page.getByPlaceholder('First Name', { exact: true }),
+    lastName:      page.getByPlaceholder('Last Name', { exact: true }),
+    userEmail:     page.getByPlaceholder('name@example.com', { exact: true }),
+    age:           page.getByPlaceholder('Age', { exact: true }),
+    salary:        page.getByPlaceholder('Salary', { exact: true }),
+    department:    page.getByPlaceholder('Department', { exact: true }),
+  })
+  
+  export const buttonslocator = (page: Page): Record<string, Locator> => ({
+    buttons:       page.getByText('Buttons'),
+    doubleClickBtn:page.locator('//button[@id="doubleClickBtn"]'),
+    rightClickBtn: page.locator('//button[@id="rightClickBtn"]'),
+    clickMeBtn: page.getByRole('button', { name: 'Click Me', exact: true }),
+    doubleClickMsg:  page.locator('//*[@id="doubleClickMessage"]'),
+    rightClickMsg:   page.locator('//*[@id="rightClickMessage"]'),
+    clickMeMsg: page.locator('//*[@id="dynamicClickMessage"]'),
+  })

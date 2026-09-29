@@ -1,8 +1,7 @@
 import { expect, Page } from '@playwright/test';
-import { demohomepage, elementslocator, checkboxlocator, radiobtnlocator } from '../locators/DemoQA';
-import { fillElementsPage } from '../test_data/testdata';
+import { demohomepage, elementslocator, checkboxlocator, radiobtnlocator, webtablelocator, buttonslocator } from '../locators/DemoQA';
+import { fillElementsPage, webTablesData } from '../test_data/testdata';
 import { readExcelData } from '@utils/excelreader';
-
 
 export class ElementsPage {constructor(private page: Page) {}
 
@@ -73,6 +72,39 @@ export class ElementsPage {constructor(private page: Page) {}
     //await radiobtnloc.impressive.check();
     //await this.page.screenshot({ path: 'screenshots/radioButtonElements_impressive.png', fullPage: true });
     //await expect(radiobtnloc.message).toHaveText('You have selected Impressive');
+  }
+
+  async webTablesElts() {
+    const elementscard = demohomepage(this.page);
+    await elementscard.elements.waitFor({ state: 'visible', timeout: 15000 });
+    await elementscard.elements.click();
+    const webtableloc = webtablelocator(this.page);
+    await webtableloc.webTables.click();
+    await webtableloc.addButton.click();
+    await webtableloc.firstName.fill(webTablesData.webTablesElements.firstName);
+    await webtableloc.lastName.fill(webTablesData.webTablesElements.lastName);
+    await webtableloc.userEmail.fill(webTablesData.webTablesElements.emailId);
+    await webtableloc.age.fill(webTablesData.webTablesElements.age.toString());
+    await webtableloc.salary.fill(webTablesData.webTablesElements.salary.toString());
+    await webtableloc.department.fill(webTablesData.webTablesElements.department);
+    await webtableloc.submitbtn.click();
+    await this.page.waitForTimeout(6000);
+    await this.page.screenshot({ path: 'screenshots/webTablesElements.png', fullPage: true });
+  }
+
+  async buttonClick() {
+    const elementscard = demohomepage(this.page);
+    await elementscard.elements.waitFor({ state: 'visible', timeout: 15000 });
+    await elementscard.elements.click();
+    const buttonloc = buttonslocator(this.page);
+    await buttonloc.buttons.click();
+    await buttonloc.doubleClickBtn.dblclick();
+    await expect(buttonloc.doubleClickMsg).toContainText('You have done a double click');
+    await buttonloc.rightClickBtn.click({ button: 'right' });
+    await expect(buttonloc.rightClickMsg).toContainText('You have done a right click');
+    await buttonloc.clickMeBtn.click();
+    await expect(buttonloc.clickMeMsg).toContainText('You have done a dynamic click');
+    await this.page.screenshot({ path: 'screenshots/buttonElements.png', fullPage: true });
   }
  
 }

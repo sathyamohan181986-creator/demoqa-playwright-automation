@@ -1,7 +1,7 @@
 import { expect, Page, test } from '@playwright/test'
 import { readExcelData } from '@utils/excelreader';
 import { ElementsPage } from '@pages/ElementsPage';
-import { fillElementsPage } from '../src/test_data/testdata';
+import { fillElementsPage, webTablesData } from '../src/test_data/testdata';
 import { url } from 'inspector';
 import { demohomepage } from 'src/locators/DemoQA';
 
@@ -26,6 +26,18 @@ test.describe('Access to DemoQA site', ()=> {
     const demoQAURLradio = fillElementsPage.textBoxElements.demoQAurl;
     await radiobtnelts.clickElementsCard(demoQAURLradio);
     await radiobtnelts.radioButtonElts();
+  })
+  test('TC4: Validate Web Tables Elements', async ({ page }) => {
+    const webtableelts = new ElementsPage(page);
+    const demoQAURLwebtable = webTablesData.webTablesElements.demoQAurl;
+    await webtableelts.clickElementsCard(demoQAURLwebtable);
+    await webtableelts.webTablesElts();
+  })
+  test('TC5: Validate Button Click Elements', async ({ page }) => {
+    const buttonclickelts = new ElementsPage(page);
+    const demoQAURLbuttonclick = fillElementsPage.textBoxElements.demoQAurl;
+    await buttonclickelts.clickElementsCard(demoQAURLbuttonclick);
+    await buttonclickelts.buttonClick();
   })
 
 });
